@@ -188,6 +188,7 @@ function( create_version_header dest_path target )
             OUTPUT ${version_h_output}
             # On Windows this command has to be invoked by a shell in order to work
             COMMAND ${BASH_EXECUTABLE} -c "\"${mkversion}\" ${MKV_VERSION_OPT} \"-o\" \"version.h\" \"${dest_path}\""
+            COMMAND "${BASH_EXECUTABLE}" -- ./scripts/mkversion -v "${KTX_GIT_VERSION_FULL}" -o version.h "${dest_path}"
             WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
             COMMENT "Generate ${version_h_output}"
             VERBATIM
